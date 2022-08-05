@@ -589,7 +589,7 @@ double CV_Split_WEN::Logistic_Deviance(arma::mat x, arma::vec y,
   //exp loss
   //return(arma::accu(arma::exp(-1*(2*y-1)%((arma::mean(intercept) + x * arma::mean(betas, 1)-1)*2)))/x.n_rows);
   //return(std::pow(-1*std::log(1-(arma::accu(y)/x.n_rows)),(1+(arma::accu(y)/x.n_rows)))*arma::accu(((std::exp(2) - 1) * (-2*arma::log((2*arma::accu(y)/x.n_rows*y-y+1))))%((1 / (std::exp(-1) - std::exp(1))) - 1 / ((arma::exp(-1 * ((2 * y - 1) % ((arma::mean(intercept) + x * arma::mean(betas, 1)) / (1 + arma::mean(intercept) + x * arma::mean(betas, 1)))))) - std::exp(1)))) / x.n_rows);  
-  return(arma::accu(((std::exp(2) - 1) * std::log((4))*((1 / (std::exp(-1) - std::exp(1))) - 1 / ((arma::exp(-1 * ((2 * y - 1) % ((arma::mean(intercept) + x * arma::mean(betas, 1)) / (1 + arma::mean(intercept) + x * arma::mean(betas, 1)))))) - std::exp(1)))) / x.n_rows);  
+  return(arma::accu(((std::exp(2) - 1) * std::log(4))*((1 / (std::exp(-1) - std::exp(1))) - 1 / ((arma::exp(-1 * ((2 * y - 1) % ((arma::mean(intercept) + x * arma::mean(betas, 1)) / (1 + arma::mean(intercept) + x * arma::mean(betas, 1)))))) - std::exp(1)))) / x.n_rows);  
 }
 // Gamma Deviance (MSPE)
 double CV_Split_WEN::Gamma_Deviance(arma::mat x, arma::vec y,
