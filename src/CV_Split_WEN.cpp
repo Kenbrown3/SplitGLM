@@ -590,8 +590,10 @@ double CV_Split_WEN::Logistic_Deviance(arma::mat x, arma::vec y,
   //return(arma::accu(arma::exp(-1*(2*y-1)%((arma::mean(intercept) + x * arma::mean(betas, 1)-1)*2)))/x.n_rows);
   //return(2*(-1*std::log(1-(arma::accu(y)/x.n_rows)))*arma::accu(((std::exp(2) - 1) * (-2*arma::log((2*arma::accu(y)/x.n_rows*y-y+1))))%((1 / (std::exp(-1) - std::exp(1))) - 1 / ((arma::exp(-1 * ((2 * y - 1) % ((arma::mean(intercept) + x * arma::mean(betas, 1)) / (1 + arma::mean(intercept) + x * arma::mean(betas, 1)))))) - std::exp(1)))) / x.n_rows);  
   //return(arma::accu(((std::exp(2) - 1) * std::log(4/(2*(arma::accu(y)/x.n_rows))))*((1 / (std::exp(-1) - std::exp(1))) - 1 / ((arma::exp(-1 * ((2 * y - 1) % ((arma::mean(intercept) + x * arma::mean(betas, 1)) / (1 + arma::mean(intercept) + x * arma::mean(betas, 1)))))) - std::exp(1)))) / x.n_rows);  
-  return(arma::mean((std::exp(1)/(std::exp(1)-1))*
-         (-2*arma::log((1+(2*y-1))*arma::accu(y)/(4*x.n_rows)+(1-(2*y-1))*arma::accu(y-1)/(-4*x.n_rows))*
+  return(arma::mean(
+    (std::exp(1)/(std::exp(1)-1))*
+         (-2*arma::log(
+           (1+(2*y-1))*arma::mean(y)/4+(1-(2*y-1))*(1-arma::mean(y))/4)%
           (2*(2*y-1)%arma::pow((2*y-1)+2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1,-1))%
           (
             arma::exp(
