@@ -596,10 +596,11 @@ double CV_Split_WEN::Logistic_Deviance(arma::mat x, arma::vec y,
       //          (1-arma::mean(y))/4)%
     //arma::pow((2*(2*y-1)%arma::pow((2*y-1)+2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1,-1)),1/(1-arma::mean(y)))%(arma::exp((-2*y+1)%(2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1))-std::exp(-1)))));
    //return(arma::mean(arma::pow((2*(2*y-1)%arma::pow((2*y-1)+2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1,-1)),1/(1-arma::mean(y)))%(arma::exp((-2*y+1)%(2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1))-std::exp(-1))));
-  return(arma:mean(
-    arma::pow(
-      arma::exp(
-        (2*y-1)%arma::pow((2*y-1)+(2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1),-1)-std::exp(.5),2*arma::mean(y)))));
+  return(
+    arma:mean(
+      arma::pow(
+        arma::exp((2*y-1)%arma::pow((2*y-1)+(2*(arma::mean(intercept) + x * arma::mean(betas, 1))-1),-1)
+                  -std::exp(.5)),2*arma::mean(y))));
   
 }
 // Gamma Deviance (MSPE)
